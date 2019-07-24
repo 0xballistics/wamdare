@@ -1,0 +1,3 @@
+Model: lstm
+Test loss: 0.2605501056396485
+Test accuracy: 0.8938826511564029
