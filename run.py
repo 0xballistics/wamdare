@@ -79,11 +79,13 @@ def test_with_batch(model, batch_dict: dict, padding_type='post'):
     import tensorflow as tf
     graph = tf.get_default_graph()
     with graph.as_default():
+        print("LOADING...")
         load_encoder(config.ENCODER_SAVE_PATH)
         data = encode_data(values)
         X = convert_to_numpy(data, padding_type)
+        print("PREDICTING...")
 
-        predictions = model.predict(X)
+        predictions = model.predict(X, verbose=1, batch_size=100)
         out = []
         for name, pred in zip(keys, list(predictions)):
             out.append((name, pred[0]))
